@@ -1,5 +1,6 @@
 package be.vdab.services;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import be.vdab.dao.ArtikelDAO;
@@ -22,5 +23,12 @@ public class ArtikelService {
 	
 	public List<Artikel> findNaam(String naam) {
 		return artikelDAO.findNaam(naam);
+	}
+	
+	public void prijsverhoging(BigDecimal percentage) {
+		  BigDecimal factor = BigDecimal.ONE.add(percentage.divide(BigDecimal.valueOf(100)));
+		  artikelDAO.beginTransaction();
+		  artikelDAO.prijsverhoging(factor);
+		  artikelDAO.commit();
 	}
 } 

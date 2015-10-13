@@ -12,7 +12,7 @@
   <h1>Artikel zoeken</h1>
   <form id='zoekenopnaamform'>
 	<label>Naam:<span>${fouten.naam}</span> 
-		<input name='voornaam' value='${param.naam}' autofocus required>
+		<input name='naam' value='${param.naam}' autofocus required>
 	</label>
     <input type='submit' value='Zoeken'>
   </form>

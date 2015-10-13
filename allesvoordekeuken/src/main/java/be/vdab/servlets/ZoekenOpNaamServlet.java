@@ -26,6 +26,7 @@ public class ZoekenOpNaamServlet extends HttpServlet {
 		if (request.getQueryString() != null)  {
 			Map<String, String> fouten = new HashMap<>();
 			String naam = request.getParameter("naam");
+			System.out.println(naam);
 			if (!Artikel.isNaamValid(naam)) {
 				fouten.put("naam", "verplicht");
 			}
