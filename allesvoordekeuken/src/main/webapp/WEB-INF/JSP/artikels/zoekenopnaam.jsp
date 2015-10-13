@@ -1,0 +1,42 @@
+<%@page contentType='text/html' pageEncoding='UTF-8' session='false'%>
+<%@taglib uri='http://java.sun.com/jsp/jstl/core' prefix='c'%>
+<%@taglib uri='http://java.sun.com/jsp/jstl/fmt' prefix='fmt'%>
+<%@taglib uri='http://vdab.be/tags' prefix='v' %>
+<!doctype html>
+<html lang='nl'>
+<head>
+<v:head title='${empty artikel ? "Artikel zoeken" : artikel.naam}'/>
+</head>
+<body>
+  <v:menu/>
+  <h1>Artikel zoeken</h1>
+  <form id='zoekenopnaamform'>
+	<label>Naam:<span>${fouten.naam}</span> 
+		<input name='voornaam' value='${param.naam}' autofocus required>
+	</label>
+    <input type='submit' value='Zoeken'>
+  </form>
+  <c:if test='${not empty param and empty fouten and empty namen}'>
+  	Artikel niet gevonden
+  </c:if>
+  <c:if test='${not empty namen}'>
+    <table>
+      <thead>
+        <tr>
+          <th>Naam</th><th>Nummer</th><th>Aankoopprijs</th><th>Verkoopprijs</th>
+        </tr>
+      </thead>
+      <tbody>
+        <c:forEach items='${namen}' var='artikel'>
+          <tr>
+            <td>${artikel.naam}</td>
+            <td>${artikel.id}</td>
+            <td><fmt:formatNumber value='${artikel.aankoopprijs}' minFractionDigits='2' maxFractionDigits='2'/></td>
+            <td><fmt:formatNumber value='${artikel.verkoopprijs}' minFractionDigits='2' maxFractionDigits='2'/></td>
+          </tr>
+        </c:forEach>
+      </tbody>
+    </table> 
+  </c:if>
+</body>
+</html> 
