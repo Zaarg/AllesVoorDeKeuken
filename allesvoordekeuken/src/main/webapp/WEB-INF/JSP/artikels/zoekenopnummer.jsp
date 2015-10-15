@@ -21,6 +21,13 @@
   </c:if>
   <c:if test='${not empty artikel}'>
     ${artikel.naam}, aankoopprijs: &euro; <fmt:formatNumber value='${artikel.aankoopprijs}'/>, verkoopprijs: &euro; <fmt:formatNumber value='${artikel.verkoopprijs}'/>, , winstpercentage: <fmt:formatNumber value='${artikel.getWinstPercent()}'/> % 
+  	<c:set var='soortArtikel' value="${artikel['class'].simpleName}" />
+  	<c:if test='${soortArtikel eq "FoodArtikel"}'>
+  		houdbaarheid: ${artikel.houdbaarheid}
+  	</c:if>
+  	<c:if test='${soortArtikel eq "NonFoodArtikel"}'>
+  		garantie: ${artikel.garantie}
+  	</c:if>
   </c:if>
 </body>
 </html> 

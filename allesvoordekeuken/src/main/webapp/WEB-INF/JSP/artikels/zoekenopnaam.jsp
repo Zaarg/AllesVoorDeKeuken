@@ -23,16 +23,20 @@
     <table>
       <thead>
         <tr>
-          <th>Naam</th><th>Nummer</th><th>Aankoopprijs</th><th>Verkoopprijs</th>
+          <th>Naam</th><th>Nummer</th><th>Aankoopprijs</th><th>Verkoopprijs</th><th>Soort<th>Houdbaarheid/Garantie</th>
         </tr>
       </thead>
       <tbody>
         <c:forEach items='${namen}' var='artikel'>
+          <c:set var='soortArtikel' value="${artikel['class'].simpleName}" />
           <tr>
             <td>${artikel.naam}</td>
             <td>${artikel.id}</td>
             <td><fmt:formatNumber value='${artikel.aankoopprijs}' minFractionDigits='2' maxFractionDigits='2'/></td>
             <td><fmt:formatNumber value='${artikel.verkoopprijs}' minFractionDigits='2' maxFractionDigits='2'/></td>
+            <td>${soortArtikel}</td>
+            <td><c:if test='${soortArtikel eq "FoodArtikel"}'>${artikel.houdbaarheid}</c:if>
+            	<c:if test='${soortArtikel eq "NonFoodArtikel"}'>${artikel.garantie}</c:if></td>
           </tr>
         </c:forEach>
       </tbody>

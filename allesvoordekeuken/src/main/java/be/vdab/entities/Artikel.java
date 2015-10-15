@@ -4,14 +4,19 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
+import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 
 @Entity
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @Table(name = "artikels")
-public class Artikel implements Serializable { 
+@DiscriminatorColumn(name = "soort")
+public abstract class Artikel implements Serializable { 
 	
 	private static final long serialVersionUID = 1L;
 	@Id 
@@ -29,11 +34,7 @@ public class Artikel implements Serializable {
 	
 	public Artikel() {}
 	
-	public static long getSerialversionuid() {
-	return serialVersionUID;
-	}
-	
-    public void setNaam(String naam) {
+	public void setNaam(String naam) {
     	if (!isNaamValid(naam)) {
 			throw new IllegalArgumentException();
 		}
