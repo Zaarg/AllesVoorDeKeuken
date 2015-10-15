@@ -11,8 +11,7 @@ public class ArtikelService {
 	private final ArtikelDAO artikelDAO = new ArtikelDAO();   
 	
 	public Artikel read(long id) { 
-		return artikelDAO.read(id);     
-		
+		return artikelDAO.read(id);     	
 	}
 	
 	public void create(Artikel artikel) {
@@ -23,6 +22,10 @@ public class ArtikelService {
 	
 	public List<Artikel> findNaam(String naam) {
 		return artikelDAO.findNaam(naam);
+	}
+	
+	public List<Artikel> findAll() {
+	    return artikelDAO.findAll();
 	}
 	
 	public void prijsverhoging(BigDecimal percentage) {
