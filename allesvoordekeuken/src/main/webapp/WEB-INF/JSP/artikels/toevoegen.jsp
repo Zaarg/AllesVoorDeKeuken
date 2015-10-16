@@ -26,6 +26,15 @@
 			<label>Houdbaarheid: <input type="text" name='houdbaarheid' id='houdbaarheid' value='${param.houdbaarheid}' required></label><br/>
   			<input type="radio" name="artikeltype" id="nonfood" value="Non-Food">Non-Food<br/>
   			<label>Garantie: <input type="text" name='garantie' id='garantie' value='${param.garantie}' required></label>
+		<label>Artikelgroep: <span>${fouten.artikelgroepen}</span>
+		<select name='artikelgroepen' size='${artikelgroepen.size()}' required>
+		  <c:forEach items='${artikelgroepen}' var='artikelgroep'>
+		    <option value='${artikelgroep.id}'
+		      ${artikelgroep.id == param.artikelgroepen ? 'selected' : ''}>
+		      ${artikelgroep.naam}</option>
+		  </c:forEach>
+		</select>
+		</label> 
 		<br/><br/>
 		<input type='submit' value='Toevoegen' id='toevoegknop'>
 	</form>

@@ -20,5 +20,9 @@
     		update Artikel a set a.verkoopprijs = a.verkoopprijs * :factor
     	</query>
 	</named-query>
-	
+	<named-query name='Artikelgroep.findAll'>
+    	<query>
+      		select a from Artikelgroep a
+    	</query>
+  	</named-query>
 </entity-mappings> 
