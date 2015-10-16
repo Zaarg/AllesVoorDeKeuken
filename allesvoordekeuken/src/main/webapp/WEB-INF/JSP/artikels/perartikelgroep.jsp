@@ -9,17 +9,21 @@
 </head>
 <body>
   <v:menu/>
-  <h1>Artikel zoeken</h1>
-  <form id='zoekenopnaamform'>
-	<label>Naam:<span>${fouten.naam}</span> 
-		<input name='naam' value='${param.naam}' autofocus required>
-	</label>
-    <input type='submit' value='Zoeken'>
-  </form>
-  <c:if test='${not empty param and empty fouten and empty namen}'>
-  	Artikel niet gevonden
-  </c:if>
-  <c:if test='${not empty namen}'>
+  <h1>Artikels per groep</h1>
+  <ul class='inlinelist'>
+  <c:forEach items='${artikelgroepen}' var='artikelgroep'>
+    <c:url value='' var='url'>
+      <c:param name='id' value='${artikelgroep.id}' />
+    </c:url>
+    <li><a href='${url}'>${artikelgroep.naam}</a></li>
+  </c:forEach>
+  </ul>
+  <c:if test='${not empty artikelgroep}'>
+    <h2>${artikelgroep.naam}</h2> 
+    <c:if test='${not empty param and empty fouten and empty artikelgroep.artikels}'>
+  	Geen Artikels gevonden in deze groep
+  	</c:if>
+    <c:if test='${not empty artikelgroep.artikels}'>
     <table>
       <thead>
         <tr>
@@ -27,7 +31,7 @@
         </tr>
       </thead>
       <tbody>
-        <c:forEach items='${namen}' var='artikel'>
+        <c:forEach items='${artikelgroep.artikels}' var='artikel'>
           <c:set var='soortArtikel' value="${artikel['class'].simpleName}" />
           <tr>
             <td>${artikel.naam}</td>
@@ -41,7 +45,8 @@
           </tr>
         </c:forEach>
       </tbody>
-    </table> 
-  </c:if>
+    </table>  
+    </c:if>
+  </c:if>  
 </body>
 </html> 

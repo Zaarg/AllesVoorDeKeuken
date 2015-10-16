@@ -29,6 +29,7 @@ public class ArtikelDAO extends AbstractDAO {
 	
 	public List<Artikel> findAll() {
 		    return getEntityManager().createNamedQuery("Artikel.findAll", Artikel.class)
-		    .getResultList();
+		    	.setHint("javax.persistence.loadgraph", getEntityManager().createEntityGraph("Artikel.metGroep"))
+		    	.getResultList();
 	}
 }

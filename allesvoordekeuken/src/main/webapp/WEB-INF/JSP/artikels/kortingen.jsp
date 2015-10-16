@@ -20,6 +20,7 @@
           <th>Verkoopprijs</th>
           <th>Soort
           <th>Houdbaarheid/Garantie</th>
+          <th>Groep</th>
         </tr>
       </thead>
       <tbody>
@@ -37,6 +38,7 @@
             <td><a href='${artikelURL}'><c:if test='${soortArtikel eq "FoodArtikel"}'>${artikel.houdbaarheid}</c:if>
             	<c:if test='${soortArtikel eq "NonFoodArtikel"}'>${artikel.garantie}</c:if></a>
             </td>
+            <td><a href='${artikelURL}'>${artikel.artikelgroep.naam}</a></td>
           </tr>
           <c:if test='${param.artikelid eq artikel.id}'>
           <tr>

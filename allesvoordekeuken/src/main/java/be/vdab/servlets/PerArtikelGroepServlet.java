@@ -24,20 +24,12 @@ public class PerArtikelGroepServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request,  HttpServletResponse response) throws ServletException, IOException {
 		request.setAttribute("artikelgroepen", artikelgroepService.findAll());
-		if (request.getQueryString() != null)  {
-			Map<String, String> fouten = new HashMap<>();
-			String naam = request.getParameter("naam");
-			System.out.println(naam);
-			if (!Artikel.isNaamValid(naam)) {
-				fouten.put("naam", "verplicht");
-			}
-			if (fouten.isEmpty()) {	
-				request.setAttribute("namen", artikelgroepService.findNaam(naam));
-			} else {
-				request.setAttribute("fouten", fouten);
-			}
-		}
-	request.getRequestDispatcher(VIEW).forward(request, response); 
-  }
+		String id = request.getParameter("id");
+	    if (id != null) {
+	      request.setAttribute("artikelgroep", artikelgroepService.read(Long.parseLong(id)));
+	    }
+	    request.getRequestDispatcher(VIEW).forward(request, response);
+	   
+	}
 
 }

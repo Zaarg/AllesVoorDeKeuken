@@ -31,6 +31,16 @@ nav li a:hover {
 	color: #F7FFCC;
 }
 
+/* Menu Lists */
+ul.inlinelist {
+	list-style: none;
+}
+
+ul.inlinelist li {
+	display: inline;
+	padding-left: 0.5em;
+}
+
 /* List Styles */
 ul.zebra {
 	list-style: none;
