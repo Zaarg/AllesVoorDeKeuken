@@ -15,7 +15,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "artikelgroepen")
-public abstract class Artikelgroep implements Serializable { 
+public class Artikelgroep implements Serializable { 
 	
 	private static final long serialVersionUID = 1L;
 	@Id 

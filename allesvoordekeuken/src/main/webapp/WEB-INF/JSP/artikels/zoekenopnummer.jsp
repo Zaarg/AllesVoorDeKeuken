@@ -28,6 +28,7 @@
   	<c:if test='${soortArtikel eq "NonFoodArtikel"}'>
   		garantie: ${artikel.garantie}
   	</c:if>
+  	<br/>${artikel.artikelgroep.naam}
   </c:if>
 </body>
 </html> 
